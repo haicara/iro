@@ -1,6 +1,8 @@
 <?php
 // メニュー
 register_nav_menu('header_menu', 'ヘッダーメニュー');
+// カスタムロゴ
+add_theme_support('custom-logo');
 //アイキャッチ表示 
 add_theme_support( 'post-thumbnails', array( 'post','page','work' ) );
 the_post_thumbnail();
@@ -13,41 +15,6 @@ remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('admin_print_scripts', 'print_emoji_detection_script');
 remove_action('wp_print_styles', 'print_emoji_styles' );
 remove_action('admin_print_styles', 'print_emoji_styles');
-/* カスタム投稿タイプ / 制作実績
------------------------------- */
-add_action( 'init', 'create_post_type' );
-function create_post_type() {
-    register_post_type( 'work', [
-        'labels' => [
-            'name'          => 'ポートフォリオ',
-            'singular_name' => 'work',
-        ],
-        'public'        => true,
-        'has_archive'   => true,
-        'menu_position' => 5,
-        'show_in_rest'  => true,
-        'rewrite' => array('with_front' => false),
-    ]);
-}
-register_post_type(
-    'work',
-    array(
-        'supports' => array('title','editor','thumbnail')
-    )
-);
-add_filter('post_type_link', 'my_post_type_link', 1, 2 );
-		function my_post_type_link($link, $post){
-		if ('work' === $post->post_type) {
-		return home_url('/work/' . $post->ID);
-	} else {
-		return $link;
-	}
-}
-	add_filter('rewrite_rules_array', 'my_rewrite_rules_array');
-	function my_rewrite_rules_array($rules) {
-	$new_rules = array('work/([0-9]+)/?$' => 'index.php?post_type=work&p=$matches[1]',);
-	return $new_rules + $rules;
-}
 // タームタイトル変更
 add_filter( 'get_the_archive_title', function ($title) {
     if (is_category()) {
