@@ -13,7 +13,7 @@
 						<div class="description">
 							<p><?php $category = get_the_category(); echo $category[0]->cat_name; ?></p>
 							<span><?php the_time('Y.m.d'); ?></span>
-							<h3><?php the_title(); ?></p>
+							<h2><?php the_title(); ?></h2>
 						</div>
 					</a>
 				</li>
@@ -22,5 +22,8 @@
 			<?php endif ; ?>
 		</div>
 	</section>
+	<?php if (function_exists("pagination")):
+		pagination( $wp_query->max_num_pages);
+	endif; ?>
 </main>
 <?php get_footer(); ?>

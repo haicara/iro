@@ -11,7 +11,10 @@ html,body,h1,h2,h3,h4,h5,h6,ul,li,p {
     margin: 0;
     padding: 0;
 }
-$font: 'futura-pt',vdl-v7marugothic,游ゴシック,"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+ul,li {
+	list-style: none;
+}
+$font: 'Rajdhani',vdl-v7marugothic,游ゴシック,"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -132,124 +135,120 @@ header {
 	}
 }
 /* drawer menu */
-.l-drawer {
-  position: absolute;
+.drawer {
+	position: absolute;
 	top: 0;
 	right: 0;
-  // inputのcheckboxは非表示
-  input[type=checkbox] {
-    display: none;
-  }
-  // ハンバーガーアイコン
-  &__icon{
-    cursor: pointer;
-    display: block;
-    width: 50px;
-    height: 55px;
-    position: absolute;
-    right: 0;
-	  top: 0;
-    // ハンバーガーアイコンの中の線
-    &-parts,
-    &-parts:before,
-    &-parts:after{
-      background-color: #000;   
-      display: block;
-      width: 20px;
-      height: 2px;
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      margin: auto;
-    }
-    &-parts:before,
-    &-parts:after{
-      content: " ";
-    }
-    &-parts:before{
-      top: 16px
-    }
-    &-parts:after{
-      top: -16px
-    }
-  }
-  
-  // ドロワーメニュー開いた時のメインエリアを暗く
-  &__overlay{
-    background: #000;
-    opacity: 0;
-    pointer-events: none; //ポインタの動作全部無効化
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    right: 0;
-  }
-  
-  // ドロワーメニュー
-  nav {
-	background: #ffffff;
-	color: #000;
-	max-width: 100%;
-	width: 320px;
-	height: 100vh;
-	overflow-y: auto; //スクロール
-	-webkit-overflow-scrolling: touch; //スクロール（SP）
-	position: fixed;
-	top: 0;
-	right: -320px;
-	z-index: 3;
-  }
-  // z-indexの指定（1がメインエリア）
-  &__icon{
-    z-index: 4;
-  }
-  &__overlay{
-    z-index: 2;
-  }
-  
-  // チェックが入ったら（アイコンクリックしたら）
-  input[type=checkbox]:checked ~ {
-    // ハンバーガーアイコン
-    .l-drawer__icon{
+	* {
+		transition: .3s;
+	}
+	.icon {
+		cursor: pointer;
+		display: block;
+		width: 50px;
+		height: 45px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		z-index: 4;
+		// ハンバーガーアイコンの中の線
+		span,span:before,span:after {
+			background-color: #333;
+			display: block;
+			width: 20px;
+			height: 2px;
+			position: absolute;
+			top: 0;
+			right: 0;
+			left: 0;
+			bottom: 0;
+			margin: auto;
+		}
+		span:before,
+		span:after {
+			content:'';
+		}
+		span:before {
+			top: 16px
+		}
+		span:after {
+			top: -16px
+		}
+	}
+	.overlay{
+		background: #000;
+		opacity: 0;
+		pointer-events: none;
+		width: 100%;
+		height: 100%;
 		position: fixed;
-      .l-drawer__icon-parts{
-        background: transparent;
-      }
-      .l-drawer__icon-parts:before{
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg);
-        top: 0;
-      }
-      .l-drawer__icon-parts:after{
-        -webkit-transform: rotate(45deg);
-        transform: rotate(45deg);
-        top: 0;
-      }
-    }
-    // メインエリアを暗くする
-    .l-drawer__overlay {
-      opacity: 0.3;
-      pointer-events: auto; //ポインタの動作デフォルトに戻す
-    }
-    // メニューをだす
-    nav {
-      right: 0;
-    }
-  }
-  // 動きをスムーズに
-  &__icon-parts,
-  &__icon-parts:after,
-  &__icon-parts:before,
-  &__overlay,
-  nav {
-    -webkit-transition: all .3s ;
-    transition: all .3s ;
-  }
+		top: 0;
+		right: 0;
+		z-index: 2;
+	}
+	nav {
+		font-size: 1rem;
+		color: #fff;
+		max-width: 100%;
+		width: 480px;
+		height: 100vh;
+		overflow-y: auto;
+		-webkit-overflow-scrolling: touch;
+		position: fixed;
+		top: 0;
+		right: -480px;
+		padding: 20px;
+		z-index: 3;
+		a {
+			color: #fff;
+			font-weight: bold;
+		}
+		h2 {
+			opacity: 0.5;
+			text-align: center;
+			font-size: 2rem;
+			letter-spacing: .2rem;
+			padding: 10px 0;
+			//margin: 20px 0;
+			//border-top: 4px solid #fff;
+			//border-bottom: 1px solid #fff;
+		}
+		li {
+			margin-bottom: 10px;
+		}
+	}
+	input[type=checkbox] {
+		display: none;
+	}
+	input[type=checkbox]:checked ~ {
+		.icon {
+			position: fixed;
+			span,span:before,span:after {
+				background-color: #fff;
+			}
+			span {
+				background: transparent;
+			}
+			span:before{
+				-webkit-transform: rotate(-45deg);
+				transform: rotate(-45deg);
+				top: 0;
+			}
+			span:after{
+				-webkit-transform: rotate(45deg);
+				transform: rotate(45deg);
+				top: 0;
+			}
+		}
+		.overlay {
+			opacity: 0.5;
+			pointer-events: auto;
+		}
+		nav {
+			right: 0;
+		}
+	}
 }
-
 /* breadcrumb */
 .breadcrumb {
     font-size: 12px;
@@ -270,8 +269,52 @@ header {
 .post-list {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
-	.thumpnail {
-		
+	grid-gap: 30px;
+	.thumbnail {
+		min-height: 190px;
+		display: block;
+		width: 100%;
+		overflow: hidden;
+		position: relative;
+		img {
+			height: 100%;
+			max-width: 100%;
+			width: 100%;
+			transition: transform 0.3s linear;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			object-fit: cover;
+			margin: auto;
+		}
+	}
+	li {
+		position: relative;
+		&:hover img {
+			transform: scale(1.05); 
+		}
+		h2 {
+			font-size: 1rem;
+		}
+		span {
+			display: block;
+			padding: 10px 0 5px 0;
+			font-size: .7rem;
+			letter-spacing: .2rem;
+		}
+		p {
+			position: absolute;
+			font-size: .7rem;
+			font-weight: bold;
+			letter-spacing: .1rem;
+			padding: 7px 10px;
+			color: #fff;
+			border: 3px solid #fff;
+			top: -10px;
+			left: -10px;
+		}
 	}
 }
 /* pagination
@@ -367,7 +410,6 @@ $article_width: 900px;
     width: 100%;
     margin: 30px auto 20px auto;
     padding: 0;
-    list-style: none;
     font-size: .8rem;
     letter-spacing: .1em;
 }
@@ -489,7 +531,6 @@ dd.widget ul {
     padding: 0;
 }
 dd.widget li {
-    list-style: none;
     margin: 0;
     padding: 0;
     border-bottom: 1px solid #f5f5f5;
@@ -499,7 +540,6 @@ dd.widget li {
 .wp-tag-cloud {
     margin: 0;
     padding: 0;
-    list-style: none;
 }
 .wp-tag-cloud li {
     display: inline-block;

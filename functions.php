@@ -1,6 +1,4 @@
 <?php
-// メニュー
-register_nav_menu('header_menu', 'ヘッダーメニュー');
 // カスタムロゴ
 add_theme_support('custom-logo');
 //アイキャッチ表示 
@@ -10,6 +8,48 @@ the_post_thumbnail('thumbnail');
 the_post_thumbnail('medium');
 the_post_thumbnail('large');
 the_post_thumbnail('full');
+/* カスタマイザー
+--------------------*/
+function theme_customizer_extension($wp_customize) {
+	// メインカラー
+	$wp_customize->add_setting( 'main_color', array(
+	'default' => '#18cad3',
+	));
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'main_color', array(
+	'label' => 'メインカラー',
+	'section' => 'colors',
+	'settings' => 'main_color',
+	'priority' => 20,
+	)));
+}
+add_action('customize_register', 'theme_customizer_extension');
+// メインカラー
+function customizer_color() {
+	$main_color = get_theme_mod( 'main_color', '#18cad3'); ?>
+	<style type="text/css">
+	 /* ヘッダー */
+	.drawer nav {
+		background-color: <?php echo $main_color; ?>;
+	}
+	.post-list li p {
+		background-color: <?php echo $main_color; ?>;
+	}
+	</style>
+<?php }
+add_action( 'wp_head', 'customizer_color');
+/* ウィジェット
+--------------------*/
+function arphabet_widgets_init() {
+    register_sidebar( array(
+		'name' => 'ドロワーメニュー',
+		'id' => 'drawer-widget',
+		'before_widget' => '',
+		'after_widget' => '',
+		'before_title' => '<h2>',
+		'after_title' => '</h2>',
+	) );
+}
+add_action( 'widgets_init', 'arphabet_widgets_init' );
 // head内の絵文字スクリプトを消す
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('admin_print_scripts', 'print_emoji_detection_script');
@@ -36,62 +76,8 @@ add_filter( 'get_the_archive_title', function ($title) {
 	}
     return $title;
 });
-//ウィジェット
-function arphabet_widgets_init() {
-	register_sidebar( array(
-		'name' => '広告/トップ/中部',
-		'id' => 'ad-top-middle',
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '',
-		'after_title' => '',
-	) );
-    register_sidebar( array(
-		'name' => 'フッター',
-		'id' => 'footer-widget',
-		'before_widget' => '<dl class="footer_widget">',
-		'after_widget' => '</dd></dl>',
-		'before_title' => '<dt class="footer_widget">',
-		'after_title' => '</dt><dd class="footer_widget">',
-	) );
-    register_sidebar( array(
-		'name' => '広告/PC/サイドバー',
-		'id' => 'ad-pc-sidebar',
-		'before_widget' => '<div class="right">',
-		'after_widget' => '</div>',
-		'before_title' => '',
-		'after_title' => '',
-	) );
-    register_sidebar( array(
-		'name' => '広告/記事/上部',
-		'id' => 'ad-single-top',
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '',
-		'after_title' => '',
-	) );
-    register_sidebar( array(
-		'name' => '広告/記事/下部',
-		'id' => 'ad-single-bottom',
-		'before_widget' => '',
-		'after_widget' => '',
-		'before_title' => '',
-		'after_title' => '',
-	) );
-}
-add_action( 'widgets_init', 'arphabet_widgets_init' );
-
-// 本文内テキスト装飾
-function change_any_texts($text){
-$replace = array(
-'<ul>' => '<ul class="list">',
-'<ol>' => '<ol class="list">'
-);
-$text = str_replace(array_keys($replace), $replace, $text);
-return $text;
-}
-add_filter('the_content', 'change_any_texts');
-// ページネーション
+/* ページネーション
+--------------------*/
 function pagination( $pages = 1, $range = 2, $show_only = false ) {
 
     $pages = (int) $pages;    //float型で渡ってくるので明示的に int型 へ
@@ -102,15 +88,12 @@ function pagination( $pages = 1, $range = 2, $show_only = false ) {
     $text_before  = "‹ PREV";
     $text_next    = "NEXT ›";
     $text_last    = "»";
-
     if ( $show_only && $pages === 1 ) {
         // １ページのみで表示設定が true の時
         echo '<div class="pagination"><span class="current">1</span></div>';
         return;
     }
-
     if ( $pages === 1 ) return;    // １ページのみで表示設定もない場合
-
     if ( 1 !== $pages ) {
         //２ページ以上の時
         echo '<div class="pagination"><span>', $paged ,' / ', $pages ,'</span>';
@@ -132,7 +115,6 @@ function pagination( $pages = 1, $range = 2, $show_only = false ) {
                     echo '<a href="', get_pagenum_link( $i ) ,'" class="inactive">', $i ,'</a>';
                 }
             }
-
         }
         if ( $paged < $pages ) {
             // 「次へ」 の表示

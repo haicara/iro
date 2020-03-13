@@ -2,13 +2,10 @@
 <div id="container">
     <main id="single">
         <div class="inner">
-            <?php if(function_exists("the_breadcrumb")){the_breadcrumb();} ?>
+            <?php include("breadcrumb.php"); ?>
         </div>
         <?php if ( have_posts() ) : ?>
         <?php while ( have_posts() ) : the_post(); ?>
-        <?php
-            setPostViews(get_the_ID()); 
-        ?>
         <article>
             <div id="eyecatch">
                 <img class="rellax" data-rellax-speed="-5" src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>" />

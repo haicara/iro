@@ -1,13 +1,9 @@
 <?php get_header(); ?>
-<div id="container">
     <main>
         <?php if ( have_posts() ) : ?>
         <?php while ( have_posts() ) : the_post(); ?>
-        <?php
-            setPostViews(get_the_ID()); 
-        ?>
 		<div class="inner">
-			<?php if(function_exists("the_breadcrumb")){the_breadcrumb();} ?>
+			<?php include("breadcrumb.php"); ?>
 		</div>
         <article>
 			<h1 class="single-title"><?php the_title(); ?></h1>
@@ -19,19 +15,19 @@
                     <?php dynamic_sidebar( 'ad-single-top' ); ?>
                 </div>
                 <?php endif; ?>
-            <div class="content">
-            <div class="text"><?php the_content(); ?></div>
-            </div>
-			<div class="inner">
-				<?php if ( is_active_sidebar( 'ad-single-bottom' ) ) : ?>
-					<?php dynamic_sidebar( 'ad-single-bottom' ); ?>
-				<?php endif; ?>
-				<ul class="single_desc">
-					<p class="single_date"><?php the_time('Y.m.d'); ?></p>
-					<li class="single_category"><?php the_category(' ' , $parents); ?></li>
-					<li class="single_tag"><?php the_tags('' , $parents); ?></li>
-				</ul>
-			</div>
+				<div class="content">
+					<div class="text"><?php the_content(); ?></div>
+				</div>
+				<div class="inner">
+					<?php if ( is_active_sidebar( 'ad-single-bottom' ) ) : ?>
+						<?php dynamic_sidebar( 'ad-single-bottom' ); ?>
+					<?php endif; ?>
+					<ul class="single_desc">
+						<p class="single_date"><?php the_time('Y.m.d'); ?></p>
+						<li class="single_category"><?php the_category(' ' , $parents); ?></li>
+						<li class="single_tag"><?php the_tags('' , $parents); ?></li>
+					</ul>
+				</div>
         </article>
         <?php endwhile; ?>
         <?php endif; ?>
@@ -72,10 +68,6 @@
             <?php previous_post_link('%link', '← PREV'); ?>
             <?php next_post_link('%link', 'NEXT →'); ?>
         </div>
-    <div id="column">
-        <?php get_sidebar(); ?>
-    </div>
-</div>
 <?php get_footer(); ?>
 
 

@@ -8,9 +8,11 @@ Author: HAICARA
 ================================= */
 html, body, h1, h2, h3, h4, h5, h6, ul, li, p { margin: 0; padding: 0; }
 
+ul, li { list-style: none; }
+
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; word-break: break-all; font-display: swap; }
 
-body { background: #fff; font-family: "futura-pt", vdl-v7marugothic, 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-size: 1rem; letter-spacing: 1px; color: #333; }
+body { background: #fff; font-family: "Rajdhani", vdl-v7marugothic, 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-size: 1rem; letter-spacing: 1px; color: #333; }
 
 /* layout
 --------------------*/
@@ -45,24 +47,26 @@ header { position: relative; background: rgba(255, 255, 255, 0.95); width: 100%;
 header .logo { text-align: center; font-weight: bold; margin: 0; padding: 0; font-size: 1.5rem; align-content: center; }
 
 /* drawer menu */
-.l-drawer { position: absolute; top: 0; right: 0; }
-.l-drawer input[type=checkbox] { display: none; }
-.l-drawer__icon { cursor: pointer; display: block; width: 50px; height: 55px; position: absolute; right: 0; top: 0; }
-.l-drawer__icon-parts, .l-drawer__icon-parts:before, .l-drawer__icon-parts:after { background-color: #000; display: block; width: 20px; height: 2px; position: absolute; top: 0; right: 0; left: 0; bottom: 0; margin: auto; }
-.l-drawer__icon-parts:before, .l-drawer__icon-parts:after { content: " "; }
-.l-drawer__icon-parts:before { top: 16px; }
-.l-drawer__icon-parts:after { top: -16px; }
-.l-drawer__overlay { background: #000; opacity: 0; pointer-events: none; width: 100%; height: 100%; position: fixed; top: 0; right: 0; }
-.l-drawer nav { background: #ffffff; color: #000; max-width: 100%; width: 320px; height: 100vh; overflow-y: auto; -webkit-overflow-scrolling: touch; position: fixed; top: 0; right: -320px; z-index: 3; }
-.l-drawer__icon { z-index: 4; }
-.l-drawer__overlay { z-index: 2; }
-.l-drawer input[type=checkbox]:checked ~ .l-drawer__icon { position: fixed; }
-.l-drawer input[type=checkbox]:checked ~ .l-drawer__icon .l-drawer__icon-parts { background: transparent; }
-.l-drawer input[type=checkbox]:checked ~ .l-drawer__icon .l-drawer__icon-parts:before { -webkit-transform: rotate(-45deg); transform: rotate(-45deg); top: 0; }
-.l-drawer input[type=checkbox]:checked ~ .l-drawer__icon .l-drawer__icon-parts:after { -webkit-transform: rotate(45deg); transform: rotate(45deg); top: 0; }
-.l-drawer input[type=checkbox]:checked ~ .l-drawer__overlay { opacity: 0.3; pointer-events: auto; }
-.l-drawer input[type=checkbox]:checked ~ nav { right: 0; }
-.l-drawer__icon-parts, .l-drawer__icon-parts:after, .l-drawer__icon-parts:before, .l-drawer__overlay, .l-drawer nav { -webkit-transition: all 0.3s; transition: all 0.3s; }
+.drawer { position: absolute; top: 0; right: 0; }
+.drawer * { transition: .3s; }
+.drawer .icon { cursor: pointer; display: block; width: 50px; height: 45px; position: absolute; right: 0; top: 0; z-index: 4; }
+.drawer .icon span, .drawer .icon span:before, .drawer .icon span:after { background-color: #333; display: block; width: 20px; height: 2px; position: absolute; top: 0; right: 0; left: 0; bottom: 0; margin: auto; }
+.drawer .icon span:before, .drawer .icon span:after { content: ''; }
+.drawer .icon span:before { top: 16px; }
+.drawer .icon span:after { top: -16px; }
+.drawer .overlay { background: #000; opacity: 0; pointer-events: none; width: 100%; height: 100%; position: fixed; top: 0; right: 0; z-index: 2; }
+.drawer nav { font-size: 1rem; color: #fff; max-width: 100%; width: 480px; height: 100vh; overflow-y: auto; -webkit-overflow-scrolling: touch; position: fixed; top: 0; right: -480px; padding: 20px; z-index: 3; }
+.drawer nav a { color: #fff; font-weight: bold; }
+.drawer nav h2 { opacity: 0.5; text-align: center; font-size: 2rem; letter-spacing: .2rem; padding: 10px 0; }
+.drawer nav li { margin-bottom: 10px; }
+.drawer input[type=checkbox] { display: none; }
+.drawer input[type=checkbox]:checked ~ .icon { position: fixed; }
+.drawer input[type=checkbox]:checked ~ .icon span, .drawer input[type=checkbox]:checked ~ .icon span:before, .drawer input[type=checkbox]:checked ~ .icon span:after { background-color: #fff; }
+.drawer input[type=checkbox]:checked ~ .icon span { background: transparent; }
+.drawer input[type=checkbox]:checked ~ .icon span:before { -webkit-transform: rotate(-45deg); transform: rotate(-45deg); top: 0; }
+.drawer input[type=checkbox]:checked ~ .icon span:after { -webkit-transform: rotate(45deg); transform: rotate(45deg); top: 0; }
+.drawer input[type=checkbox]:checked ~ .overlay { opacity: 0.5; pointer-events: auto; }
+.drawer input[type=checkbox]:checked ~ nav { right: 0; }
 
 /* breadcrumb */
 .breadcrumb { font-size: 12px; color: #aaa; padding: 10px 0; border-bottom: 1px solid #f5f5f5; width: 100%; overflow: auto; white-space: nowrap; }
@@ -71,7 +75,14 @@ header .logo { text-align: center; font-weight: bold; margin: 0; padding: 0; fon
 ================================= */
 /* ================================= archive
 ================================= */
-.post-list { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+.post-list { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 30px; }
+.post-list .thumbnail { min-height: 190px; display: block; width: 100%; overflow: hidden; position: relative; }
+.post-list .thumbnail img { height: 100%; max-width: 100%; width: 100%; transition: transform 0.3s linear; position: absolute; left: 0; right: 0; top: 0; bottom: 0; object-fit: cover; margin: auto; }
+.post-list li { position: relative; }
+.post-list li:hover img { transform: scale(1.05); }
+.post-list li h2 { font-size: 1rem; }
+.post-list li span { display: block; padding: 10px 0 5px 0; font-size: .7rem; letter-spacing: .2rem; }
+.post-list li p { position: absolute; font-size: .7rem; font-weight: bold; letter-spacing: .1rem; padding: 7px 10px; color: #fff; border: 3px solid #fff; top: -10px; left: -10px; }
 
 /* pagination
 --------------------*/
@@ -109,7 +120,7 @@ header .logo { text-align: center; font-weight: bold; margin: 0; padding: 0; fon
 .single_date { font-size: .8rem; letter-spacing: .1em; }
 
 /* description */
-.single_desc { width: 100%; margin: 30px auto 20px auto; padding: 0; list-style: none; font-size: .8rem; letter-spacing: .1em; }
+.single_desc { width: 100%; margin: 30px auto 20px auto; padding: 0; font-size: .8rem; letter-spacing: .1em; }
 
 .single_category, .single_tag { font-family: 游ゴシック,sans-serif; }
 
@@ -131,7 +142,7 @@ figure { margin-block-start: 0; margin-block-end: 0; margin-inline-start: 0; mar
 --------------------*/
 #ez-toc-container { background: transparent !important; border-radius: 0; border: 0 !important; border-left: 6px solid #1bbfb9 !important; border-right: 6px solid #eee !important; -webkit-box-shadow: none; box-shadow: none; padding: 20px; }
 #ez-toc-container a { display: block; padding: 10px 0; border-bottom: 0; color: #aaa !important; font-size: .85rem; }
-#ez-toc-container .ez-toc-title { text-align: center !important; letter-spacing: .1rem; font-family: "futura-pt", vdl-v7marugothic, 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-weight: bold !important; color: #1bbfb9 !important; }
+#ez-toc-container .ez-toc-title { text-align: center !important; letter-spacing: .1rem; font-family: "Rajdhani", vdl-v7marugothic, 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-weight: bold !important; color: #1bbfb9 !important; }
 #ez-toc-container .ez-toc-list ul { margin-left: 0; }
 
 /* paging
@@ -152,10 +163,10 @@ dd.widget { padding: 0; margin: 0; }
 
 dd.widget ul { margin: 0; padding: 0; }
 
-dd.widget li { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid #f5f5f5; }
+dd.widget li { margin: 0; padding: 0; border-bottom: 1px solid #f5f5f5; }
 
 /*tag*/
-.wp-tag-cloud { margin: 0; padding: 0; list-style: none; }
+.wp-tag-cloud { margin: 0; padding: 0; }
 
 .wp-tag-cloud li { display: inline-block; margin: 0 0 7px 0; padding: 0; }
 
