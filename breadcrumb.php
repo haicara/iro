@@ -11,7 +11,7 @@
 		<a href="<?php $cat = get_the_category(); echo get_category_link($cat[0]->cat_ID); ?>" itemprop="item">
 		<span itemprop="name"><?php echo $cat[0]->name; ?></span>
 		</a>
-	</span>					
+	</span>
 	<span class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
 		<meta itemprop="position" content="3" />
 		<span itemprop="name"><?php the_title(); ?></span>
