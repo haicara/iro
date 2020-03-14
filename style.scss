@@ -425,26 +425,6 @@ $article_width: 900px;
 		border-radius: 2px;
 	}
 }
-.single_tag a {
-	display: inline-block;
-    font-weight: bold;
-    margin: 10px 10px 0 0;
-	&:before {
-		content: '#';
-	}
-	&:nth-of-type(4n+1) {
-    color: #319dbe;
-	}
-	&:nth-of-type(4n+2) {
-		color: #bf4788;
-	}
-	&:nth-of-type(4n+3) {
-		color: #bf9a47;
-	}
-	&:nth-of-type(4n+4) {
-		color: #4759bf;
-	}
-}
 /* single > content
 -------------------- */
 figure {
@@ -493,11 +473,11 @@ figure {
     margin: 20px 0;
 }
 .paging a {
-    font-family: 'Raleway';
+    font-family: $font;
     padding: 10px;
     text-align: center;
     background: #333;
-    color: #F6F7F8;
+    color: #333;
     display: table-cell;
     letter-spacing: 2px;
 }
@@ -548,7 +528,7 @@ dd.widget li {
 }
 .tag-cloud-link {
     display: inline-block;
-    border: 1px solid #aaa;
+    border: 1px solid #fff;
     margin: 0 2.5px 5px 0;
     padding: 3px 5px;
     border-radius: 4px;
