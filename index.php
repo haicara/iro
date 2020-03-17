@@ -8,7 +8,14 @@
 				<li>
 					<a href="<?php the_permalink(); ?>">
 						<div class="thumbnail">
-							<?php the_post_thumbnail('large'); ?>
+						<?php
+							$post_title = get_the_title();
+							the_post_thumbnail('large',
+							 array(
+								'loading' => 'lazy',
+								'alt' => $post_title,
+							 )
+						); ?>
 						</div>
 						<div class="description">
 							<p><?php $category = get_the_category(); echo $category[0]->cat_name; ?></p>

@@ -8,11 +8,13 @@ Author: HAICARA
 ================================= */
 html, body, h1, h2, h3, h4, h5, h6, ul, li, p { margin: 0; padding: 0; }
 
-ul, li { list-style: none; }
-
 * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; word-break: break-all; font-display: swap; }
 
-body { background: #fff; font-family: "Rajdhani", vdl-v7marugothic, 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-size: 1rem; letter-spacing: 1px; color: #333; }
+html { scroll-behavior: smooth; }
+
+body { background: #fff; font-family: "Rajdhani", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-size: 1rem; letter-spacing: 1px; color: #333; }
+
+ul, li { list-style: none; }
 
 /* layout
 --------------------*/
@@ -38,8 +40,8 @@ table { border-collapse: collapse; }
 
 /* back to top
 --------------------*/
-.back_to_top { position: relative; display: block; font-size: .7rem; text-align: center; font-weight: bold; padding: 40px 0 20px 0; color: #fff; letter-spacing: .08rem; background: #555; }
-.back_to_top::after { content: ''; display: block; width: 10px; height: 10px; border-top: solid 3px #1bbfb9; border-right: solid 3px #1bbfb9; -ms-transform: rotate(-45deg); -webkit-transform: rotate(-45deg); transform: rotate(-45deg); position: absolute; top: 25px; left: 50%; margin-left: -5px; }
+.back_to_top { display: none; position: fixed; bottom: 0; right: 0; }
+.back_to_top:after { content: ''; width: 16px; height: 16px; border: 0px; border-top: solid 2px #333; border-right: solid 2px #333; -ms-transform: rotate(-45deg); -webkit-transform: rotate(-45deg); transform: rotate(-45deg); position: absolute; margin-top: -32px; margin-left: -32px; }
 
 /* ================================= header
 ================================= */
@@ -57,7 +59,9 @@ header .logo { text-align: center; font-weight: bold; margin: 0; padding: 0; fon
 .drawer .overlay { background: #000; opacity: 0; pointer-events: none; width: 100%; height: 100%; position: fixed; top: 0; right: 0; z-index: 2; }
 .drawer nav { font-size: 1rem; color: #fff; max-width: 100%; width: 480px; height: 100vh; overflow-y: auto; -webkit-overflow-scrolling: touch; position: fixed; top: 0; right: -480px; padding: 20px; z-index: 3; }
 .drawer nav a { color: #fff; font-weight: bold; }
-.drawer nav h2 { opacity: 0.5; text-align: center; font-size: 2rem; letter-spacing: .2rem; padding: 10px 0; }
+.drawer nav a:hover { opacity: 0.5; }
+.drawer nav div { margin: 30px 0; }
+.drawer nav h2 { opacity: 0.5; text-align: center; font-size: 2rem; letter-spacing: .2rem; padding: 0; margin-bottom: 20px; }
 .drawer nav li { margin-bottom: 10px; }
 .drawer input[type=checkbox] { display: none; }
 .drawer input[type=checkbox]:checked ~ .icon { position: fixed; }
@@ -67,6 +71,8 @@ header .logo { text-align: center; font-weight: bold; margin: 0; padding: 0; fon
 .drawer input[type=checkbox]:checked ~ .icon span:after { -webkit-transform: rotate(45deg); transform: rotate(45deg); top: 0; }
 .drawer input[type=checkbox]:checked ~ .overlay { opacity: 0.5; pointer-events: auto; }
 .drawer input[type=checkbox]:checked ~ nav { right: 0; }
+.drawer select { font-family: "Rajdhani", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-weight: bold; color: #fff; letter-spacing: .2rem; width: 100%; padding: 10px; background-color: inherit; border: 2px solid #fff; outline: none; box-shadow: none; -webkit-appearance: none; appearance: none; }
+.drawer table { width: 100%; text-align: center; }
 
 /* breadcrumb */
 .breadcrumb { font-size: 12px; color: #aaa; padding: 10px 0; border-bottom: 1px solid #f5f5f5; width: 100%; overflow: auto; white-space: nowrap; }
@@ -84,6 +90,8 @@ header .logo { text-align: center; font-weight: bold; margin: 0; padding: 0; fon
 .post-list li span { display: block; padding: 10px 0 5px 0; font-size: .7rem; letter-spacing: .2rem; }
 .post-list li p { position: absolute; font-size: .7rem; font-weight: bold; letter-spacing: .1rem; padding: 7px 10px; color: #fff; border: 3px solid #fff; top: -10px; left: -10px; }
 
+@media screen and (max-width: 680px) { .post-list { display: block; }
+  .post-list li { margin-bottom: 30px; } }
 /* pagination
 --------------------*/
 .pagination { font-family: 'Raleway','游ゴシック',sans-serif; display: flex; align-items: center; justify-content: center; margin: 40px 0; position: relative; font-size: 13px; }
@@ -109,6 +117,8 @@ header .logo { text-align: center; font-weight: bold; margin: 0; padding: 0; fon
 
 /* ================================= single
 ================================= */
+article { width: 900px; margin: 0 auto; }
+
 .single-eyecatch { background-color: #eee; border-top: 1px solid #eee; border-bottom: 1px solid #eee; max-height: 500px; text-align: center; overflow: hidden; }
 .single-eyecatch img { max-width: 900px; margin: 0 auto; }
 
@@ -127,13 +137,6 @@ header .logo { text-align: center; font-weight: bold; margin: 0; padding: 0; fon
 .single_category { margin: 0 0 10px 0; }
 .single_category a { background-color: #f5f5f5; padding: 10px 20px; margin: 0 5px 0 0; border-radius: 2px; }
 
-.single_tag a { display: inline-block; font-weight: bold; margin: 10px 10px 0 0; }
-.single_tag a:before { content: '#'; }
-.single_tag a:nth-of-type(4n+1) { color: #319dbe; }
-.single_tag a:nth-of-type(4n+2) { color: #bf4788; }
-.single_tag a:nth-of-type(4n+3) { color: #bf9a47; }
-.single_tag a:nth-of-type(4n+4) { color: #4759bf; }
-
 /* single > content
 -------------------- */
 figure { margin-block-start: 0; margin-block-end: 0; margin-inline-start: 0; margin-inline-end: 0; }
@@ -142,35 +145,25 @@ figure { margin-block-start: 0; margin-block-end: 0; margin-inline-start: 0; mar
 --------------------*/
 #ez-toc-container { background: transparent !important; border-radius: 0; border: 0 !important; border-left: 6px solid #1bbfb9 !important; border-right: 6px solid #eee !important; -webkit-box-shadow: none; box-shadow: none; padding: 20px; }
 #ez-toc-container a { display: block; padding: 10px 0; border-bottom: 0; color: #aaa !important; font-size: .85rem; }
-#ez-toc-container .ez-toc-title { text-align: center !important; letter-spacing: .1rem; font-family: "Rajdhani", vdl-v7marugothic, 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-weight: bold !important; color: #1bbfb9 !important; }
+#ez-toc-container .ez-toc-title { text-align: center !important; letter-spacing: .1rem; font-family: "Rajdhani", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-weight: bold !important; color: #1bbfb9 !important; }
 #ez-toc-container .ez-toc-list ul { margin-left: 0; }
 
 /* paging
 --------------------*/
 .paging { width: 100%; display: table; margin: 20px 0; }
 
-.paging a { font-family: 'Raleway'; padding: 10px; text-align: center; background: #333; color: #F6F7F8; display: table-cell; letter-spacing: 2px; }
+.paging a { font-family: "Rajdhani", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; padding: 10px; text-align: center; background: #333; color: #333; display: table-cell; letter-spacing: 2px; }
 
 .paging a:hover { background: #18cad3; }
 
-/* ================================= sidebar
+/* ================================= widget
 ================================= */
-dl.widget { padding: 0; margin: 0; font-size: 14px; }
-
-dt.widget { text-align: center; border-top: 1.5px solid #555; border-bottom: 0.5px solid #555; padding: 10px 0; margin: 20px 0; font-size: 20px; letter-spacing: 2px; }
-
-dd.widget { padding: 0; margin: 0; }
-
-dd.widget ul { margin: 0; padding: 0; }
-
-dd.widget li { margin: 0; padding: 0; border-bottom: 1px solid #f5f5f5; }
-
 /*tag*/
 .wp-tag-cloud { margin: 0; padding: 0; }
 
 .wp-tag-cloud li { display: inline-block; margin: 0 0 7px 0; padding: 0; }
 
-.tag-cloud-link { display: inline-block; border: 1px solid #aaa; margin: 0 2.5px 5px 0; padding: 3px 5px; border-radius: 4px; font-size: 14px !important; color: #aaa; }
+.tag-cloud-link { display: inline-block; border: 1px solid #fff; margin: 0 2.5px 5px 0; padding: 3px 5px; border-radius: 2px; font-size: .8rem !important; }
 
 /* ================================= footer
 ================================= */

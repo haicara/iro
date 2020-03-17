@@ -60,3 +60,4 @@ xhr.send()
 		</div>
     </div>
 </header>
+<?php include("breadcrumb.php"); ?>

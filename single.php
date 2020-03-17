@@ -2,32 +2,22 @@
     <main>
         <?php if ( have_posts() ) : ?>
         <?php while ( have_posts() ) : the_post(); ?>
-		<div class="inner">
-			<?php include("breadcrumb.php"); ?>
-		</div>
         <article>
-			<h1 class="single-title"><?php the_title(); ?></h1>
-            <div class="single-eyecatch">
+			<h1><?php the_title(); ?></h1>
+            <div class="eyecatch">
 				<img src="<?php the_post_thumbnail_url('full'); ?>" alt="<?php the_title(); ?>" />
             </div>
-                <?php if ( is_active_sidebar( 'ad-single-top' ) ) : ?>
-                <div class="inner">
-                    <?php dynamic_sidebar( 'ad-single-top' ); ?>
-                </div>
-                <?php endif; ?>
-				<div class="content">
-					<div class="text"><?php the_content(); ?></div>
-				</div>
-				<div class="inner">
-					<?php if ( is_active_sidebar( 'ad-single-bottom' ) ) : ?>
-						<?php dynamic_sidebar( 'ad-single-bottom' ); ?>
-					<?php endif; ?>
-					<ul class="single_desc">
-						<p class="single_date"><?php the_time('Y.m.d'); ?></p>
-						<li class="single_category"><?php the_category(' ' , $parents); ?></li>
-						<li class="single_tag"><?php the_tags('' , $parents); ?></li>
-					</ul>
-				</div>
+			<?php if ( is_active_sidebar( 'ad-single-top' ) ) : ?>
+				<?php dynamic_sidebar( 'ad-single-top' ); ?>
+			<?php endif; ?>
+			<div class="content">
+				<?php the_content(); ?>
+			</div>
+			<aside>
+				<p class="single_date"><?php the_time('Y.m.d'); ?></p>
+				<li class="single_category"><?php the_category(' ' , $parents); ?></li>
+				<li class="single_tag"><?php the_tags('' , $parents); ?></li>
+			</aside>
         </article>
         <?php endwhile; ?>
         <?php endif; ?>

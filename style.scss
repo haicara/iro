@@ -11,10 +11,7 @@ html,body,h1,h2,h3,h4,h5,h6,ul,li,p {
     margin: 0;
     padding: 0;
 }
-ul,li {
-	list-style: none;
-}
-$font: 'Rajdhani',vdl-v7marugothic,游ゴシック,"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+$font: 'Rajdhani',游ゴシック,"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -22,12 +19,18 @@ $font: 'Rajdhani',vdl-v7marugothic,游ゴシック,"ヒラギノ角ゴ Pro W3", 
 	word-break: break-all;
 	font-display: swap;
 }
+html {
+	scroll-behavior: smooth;
+}
 body {
     background: #fff;
     font-family: $font;
 	font-size: 1rem;
 	letter-spacing: 1px;
     color: #333;
+}
+ul,li {
+	list-style: none;
 }
 /* layout
 --------------------*/
@@ -91,29 +94,23 @@ table {
 /* back to top
 --------------------*/
 .back_to_top {
-	position: relative;
-	display: block;
-	font-size: .7rem;
-	text-align: center;
-	font-weight: bold;
-	padding: 40px 0 20px 0;
-	color: #fff;
-	letter-spacing: .08rem;
-	background: #555;
-	&::after {
+	display: none;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	&:after {
 		content: '';
-		display: block;
-		width: 10px;
-		height: 10px;
-		border-top: solid 3px #1bbfb9;
-		border-right: solid 3px #1bbfb9;
+		width: 16px;
+		height: 16px;
+		border: 0px;
+		border-top: solid 2px #333;
+		border-right: solid 2px #333;
 		-ms-transform: rotate(-45deg);
 		-webkit-transform: rotate(-45deg);
 		transform: rotate(-45deg);
 		position: absolute;
-		top: 25px;
-		left: 50%;
-		margin-left: -5px;
+		margin-top: -32px;
+		margin-left: -32px;
 	}
 }
 /* =================================
@@ -202,16 +199,20 @@ header {
 		a {
 			color: #fff;
 			font-weight: bold;
+			&:hover {
+				opacity: 0.5;
+			}
+		}
+		div {
+			margin: 30px 0;
 		}
 		h2 {
 			opacity: 0.5;
 			text-align: center;
 			font-size: 2rem;
 			letter-spacing: .2rem;
-			padding: 10px 0;
-			//margin: 20px 0;
-			//border-top: 4px solid #fff;
-			//border-bottom: 1px solid #fff;
+			padding: 0;
+			margin-bottom: 20px;
 		}
 		li {
 			margin-bottom: 10px;
@@ -247,6 +248,25 @@ header {
 		nav {
 			right: 0;
 		}
+	}
+	// dropdown
+	select {
+		font-family: $font;
+		font-weight: bold;
+		color: #fff;
+		letter-spacing: .2rem;
+		width: 100%;
+		padding: 10px;
+		background-color: inherit;
+		border: 2px solid #fff;
+		outline: none;
+		box-shadow: none;
+		-webkit-appearance: none;
+		appearance: none;
+	}
+	table {
+		width: 100%;
+		text-align: center;
 	}
 }
 /* breadcrumb */
@@ -317,6 +337,14 @@ header {
 		}
 	}
 }
+@media screen and (max-width: 680px) {
+	.post-list {
+		display: block;
+		li {
+			margin-bottom: 30px;
+		}
+	}
+}
 /* pagination
 --------------------*/
 .pagination {
@@ -369,8 +397,11 @@ header {
 /* =================================
     single
 ================================= */
-$article_width: 1000px;
-
+$article_width: 900px;
+article {
+	width: $article_width;
+	margin: 0 auto;
+}
 .single-eyecatch {
 	background-color: #eee;
 	border-top: 1px solid #eee;
@@ -486,36 +517,8 @@ figure {
 }
 
 /* =================================
-    sidebar
+    widget
 ================================= */
-dl.widget {
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
-}
-dt.widget {
-    text-align: center;
-    border-top: 1.5px solid #555;
-    border-bottom: 0.5px solid #555;
-    padding: 10px 0;
-    margin: 20px 0;
-    font-size: 20px;
-    letter-spacing: 2px;
-}
-dd.widget {
-    padding: 0;
-    margin: 0;
-}
-dd.widget ul {
-    margin: 0;
-    padding: 0;
-}
-dd.widget li {
-    margin: 0;
-    padding: 0;
-    border-bottom: 1px solid #f5f5f5;
-}
-
 /*tag*/
 .wp-tag-cloud {
     margin: 0;
@@ -531,9 +534,8 @@ dd.widget li {
     border: 1px solid #fff;
     margin: 0 2.5px 5px 0;
     padding: 3px 5px;
-    border-radius: 4px;
-    font-size: 14px !important;
-    color: #aaa;
+    border-radius: 2px;
+    font-size: .8rem !important;
 }
 /* =================================
     footer
