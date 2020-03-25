@@ -44,11 +44,18 @@ function customizer_color() {
 	.post-list li p {
 		background-color: <?php echo $main_color; ?>;
 	}
+	footer .about dt {
+		color: <?php echo $main_color; ?>;
+	}
+	footer dl {
+		border-left: 1px solid <?php echo $main_color; ?>;
+	}
 	</style>
 <?php }
 add_action( 'wp_head', 'customizer_color');
 /* Widget setting
 --------------------*/
+// Drawer menu
 function arphabet_widgets_init() {
     register_sidebar( array(
 		'name' => 'ドロワーメニュー',
@@ -57,6 +64,15 @@ function arphabet_widgets_init() {
 		'after_widget' => '</div>',
 		'before_title' => '<h2>',
 		'after_title' => '</h2>',
+	) );
+// Footer menu
+    register_sidebar( array(
+		'name' => 'フッターメニュー',
+		'id' => 'footer-widget',
+		'before_widget' => '<dl>',
+		'after_widget' => '</dd></dl>',
+		'before_title' => '<dt>',
+		'after_title' => '</dt><dd>',
 	) );
 }
 add_action( 'widgets_init', 'arphabet_widgets_init' );
