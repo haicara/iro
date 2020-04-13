@@ -12,7 +12,7 @@ html, body, h1, h2, h3, h4, h5, h6, ul, li, p { margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }
 
-body { background: #fff; font-family: "Rajdhani", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-size: 1rem; letter-spacing: 1px; color: #333; }
+body { background: #fff; font-family: "Rajdhani", "Noto Sans JP", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-size: 1rem; color: #333; }
 
 ul, li { list-style: none; }
 
@@ -71,22 +71,34 @@ header .logo { text-align: center; font-weight: bold; margin: 0; padding: 0; fon
 .drawer input[type=checkbox]:checked ~ .icon span:after { -webkit-transform: rotate(45deg); transform: rotate(45deg); top: 0; }
 .drawer input[type=checkbox]:checked ~ .overlay { opacity: 0.5; pointer-events: auto; }
 .drawer input[type=checkbox]:checked ~ nav { right: 0; }
-.drawer select { font-family: "Rajdhani", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-weight: bold; color: #fff; letter-spacing: .2rem; width: 100%; padding: 10px; background-color: inherit; border: 2px solid #fff; outline: none; box-shadow: none; -webkit-appearance: none; appearance: none; }
+.drawer select { font-family: "Rajdhani", "Noto Sans JP", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-weight: bold; color: #fff; letter-spacing: .2rem; width: 100%; padding: 10px; background-color: inherit; border: 2px solid #fff; outline: none; box-shadow: none; -webkit-appearance: none; appearance: none; }
 .drawer table { width: 100%; text-align: center; }
 
 /* breadcrumb */
-.breadcrumb { font-size: 12px; color: #aaa; padding: 10px 0; border-bottom: 1px solid #f5f5f5; width: 100%; overflow: auto; white-space: nowrap; }
+.breadcrumb { font-size: .7rem; color: #aaa; background-color: #f5f5f5; padding: 10px 0; margin-bottom: 20px; width: 100%; overflow: auto; white-space: nowrap; }
 
 /* ================================= top
 ================================= */
+.slider a { color: #fff; font-size: 1.3rem; }
+.slider .slider-box { position: relative; }
+.slider .slider-box img { display: block; }
+.slider p { display: block; width: 100%; position: absolute; background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)); bottom: 0; left: 0; padding: 40px; }
+
+section h2 { border-left: 4px solid #333; padding-left: 20px; margin: 40px 0; font-size: 1rem; }
+section h2::before { content: attr(data-text); display: block; font-size: 2rem; }
+
 /* ================================= archive
 ================================= */
+.archive-info { border-left: 4px solid #333; padding-left: 20px; margin: 40px 0; }
+.archive-info h2 { font-size: 2rem; }
+.archive-info p { font-size: 1rem; }
+
 .post-list { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-gap: 30px; }
 .post-list .thumbnail { min-height: 190px; display: block; width: 100%; overflow: hidden; position: relative; }
 .post-list .thumbnail img { height: 100%; max-width: 100%; width: 100%; transition: transform 0.3s linear; position: absolute; left: 0; right: 0; top: 0; bottom: 0; object-fit: cover; margin: auto; }
 .post-list li { position: relative; }
 .post-list li:hover img { transform: scale(1.05); }
-.post-list li h2 { font-size: 1rem; }
+.post-list li h3 { font-size: 1rem; }
 .post-list li span { display: block; padding: 10px 0 5px 0; font-size: .7rem; letter-spacing: .2rem; }
 .post-list li p { position: absolute; font-size: .7rem; font-weight: bold; letter-spacing: .1rem; padding: 7px 10px; color: #fff; border: 3px solid #fff; top: -10px; left: -10px; }
 
@@ -94,7 +106,7 @@ header .logo { text-align: center; font-weight: bold; margin: 0; padding: 0; fon
   .post-list li { margin-bottom: 30px; } }
 /* pagination
 --------------------*/
-.pagination { font-family: 'Raleway','游ゴシック',sans-serif; display: flex; align-items: center; justify-content: center; margin: 40px 0; position: relative; font-size: 13px; }
+.pagination { font-family: "Rajdhani", "Noto Sans JP", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; display: flex; align-items: center; justify-content: center; margin: 40px 0; position: relative; font-size: 13px; }
 
 .pagination span, .pagination a { display: block; width: auto; margin: 4px; padding: 5px 10px; text-decoration: none; text-align: center; line-height: 16px; }
 
@@ -102,7 +114,7 @@ header .logo { text-align: center; font-weight: bold; margin: 0; padding: 0; fon
 .pagination .pager { width: 32px; }
 
 /* ホバー時 & 現在のページ */
-.pagination a:hover, .pagination .current { color: #fff; border-color: #555; background-color: #555; }
+.pagination a:hover, .pagination .current { color: #fff; border-color: #333; background-color: #333; }
 
 /* 前へ */
 .pagination a.before { margin-right: 16px; }
@@ -117,17 +129,20 @@ header .logo { text-align: center; font-weight: bold; margin: 0; padding: 0; fon
 
 /* ================================= single
 ================================= */
-article { width: 900px; margin: 0 auto; }
-
-.single-eyecatch { background-color: #eee; border-top: 1px solid #eee; border-bottom: 1px solid #eee; max-height: 500px; text-align: center; overflow: hidden; }
-.single-eyecatch img { max-width: 900px; margin: 0 auto; }
-
-.single-title { width: 900px; margin: 0 auto; font-size: 1.5rem; font-weight: normal; padding: 20px 0; }
-
-@media screen and (max-width: 680px) { .single-eyecatch { width: 100% !important; }
-  .single-eyecatch img { max-width: 100%; }
-  .single-title { width: 100%; } }
-.single_date { font-size: .8rem; letter-spacing: .1em; }
+article { max-width: 700px; margin: 0 auto; font-family: 'Noto Sans JP',游ゴシック,"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; line-height: 2rem; }
+article .eyecatch { position: relative; width: 100%; height: 25em; overflow: hidden; z-index: 999; position: relative; }
+article .eyecatch img { position: absolute; width: 100%; filter: brightness(60%); z-index: 996; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin: auto; }
+article .eyecatch .caption { width: 80%; text-align: center; margin: 0; padding: 0; position: absolute; text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); color: #fff; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); -moz-transform: translate(-50%, -50%); -ms-transform: translate(-50%, -50%); -o-transform: translate(-50%, -50%); transform: translate(-50%, -50%); z-index: 998; }
+article .content p { margin: 20px 0; }
+article .content img { border: 1px solid #eee; padding: 5px; }
+article .content h2 { font-size: 1.2rem; font-weight: bold; margin: 60px 0 40px 0; border-top: 3px solid #18cad3; border-bottom: 3px solid #18cad3; color: #18cad3; padding: 20px 0; letter-spacing: 1px; text-align: center; }
+article .content h3 { font-size: 1rem; padding: 15px 20px; margin: 60px 0 40px; border-left: 6px solid #18cad3; background-color: #f5f5f5; font-weight: 500; letter-spacing: 1px; }
+article .content h4 { font-size: 1rem; padding: 0 0 10px 0; margin: 60px 0 40px 0; font-weight: bold; position: relative; }
+article .content h4::before { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 4px; background: #ddd; }
+article .content h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 80px; height: 4px; background: #18cad3; }
+article .content h5 { font-size: .9rem; border: 1px solid #eee; color: #eee; font-weight: 500; padding: 10px 20px; margin: 60px 0 40px 0; }
+article .content strong { font-weight: bold; }
+article .content em { font-style: normal; font-weight: bold; background-color: #FFF94D; }
 
 /* description */
 .single_desc { width: 100%; margin: 30px auto 20px auto; padding: 0; font-size: .8rem; letter-spacing: .1em; }
@@ -145,14 +160,14 @@ figure { margin-block-start: 0; margin-block-end: 0; margin-inline-start: 0; mar
 --------------------*/
 #ez-toc-container { background: transparent !important; border-radius: 0; border: 0 !important; border-left: 6px solid #1bbfb9 !important; border-right: 6px solid #eee !important; -webkit-box-shadow: none; box-shadow: none; padding: 20px; }
 #ez-toc-container a { display: block; padding: 10px 0; border-bottom: 0; color: #aaa !important; font-size: .85rem; }
-#ez-toc-container .ez-toc-title { text-align: center !important; letter-spacing: .1rem; font-family: "Rajdhani", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-weight: bold !important; color: #1bbfb9 !important; }
+#ez-toc-container .ez-toc-title { text-align: center !important; letter-spacing: .1rem; font-family: "Rajdhani", "Noto Sans JP", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; font-weight: bold !important; color: #1bbfb9 !important; }
 #ez-toc-container .ez-toc-list ul { margin-left: 0; }
 
 /* paging
 --------------------*/
 .paging { width: 100%; display: table; margin: 20px 0; }
 
-.paging a { font-family: "Rajdhani", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; padding: 10px; text-align: center; background: #333; color: #333; display: table-cell; letter-spacing: 2px; }
+.paging a { font-family: "Rajdhani", "Noto Sans JP", 游ゴシック, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif; padding: 10px; text-align: center; background: #333; color: #333; display: table-cell; letter-spacing: 2px; }
 
 .paging a:hover { background: #18cad3; }
 

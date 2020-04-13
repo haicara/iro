@@ -1,7 +1,9 @@
 <?php get_header(); ?>
 <main>
+<?php include("slider.php"); ?>
 	<section>
 		<div class="inner">
+			<h2 data-text="LATEST POST">最新の記事</h2>
 			<?php if ( have_posts() ) : ?>
 			<ul class="post-list">
 				<?php while ( have_posts() ) : the_post(); ?>
@@ -20,17 +22,17 @@
 						<div class="description">
 							<p><?php $category = get_the_category(); echo $category[0]->cat_name; ?></p>
 							<span><?php the_time('Y.m.d'); ?></span>
-							<h2><?php the_title(); ?></h2>
+							<h3><?php the_title(); ?></h3>
 						</div>
 					</a>
 				</li>
 				<?php endwhile ; ?>
 			</ul>
 			<?php endif ; ?>
+		<?php if (function_exists("pagination")):
+			pagination( $wp_query->max_num_pages);
+		endif; ?>
 		</div>
 	</section>
-	<?php if (function_exists("pagination")):
-		pagination( $wp_query->max_num_pages);
-	endif; ?>
 </main>
 <?php get_footer(); ?>

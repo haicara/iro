@@ -16,19 +16,35 @@ url = 'https://fonts.googleapis.com/css?family=Rajdhani:400,600'
 xhr = new XMLHttpRequest()
 xhr.open('GET', url)
 xhr.onreadystatechange = function () {
-	if (xhr.readyState !== 4 || xhr.status !== 200) return
-	var style
-	style = document.createElement('style')
-	style.innerHTML = xhr.responseText.replace(/}/g, 'font-display: swap; }')
-	document.head.appendChild(style)
+  if (xhr.readyState !== 4 || xhr.status !== 200) return
+  var style
+  style = document.createElement('style')
+  style.innerHTML = xhr.responseText.replace(/}/g, 'font-display: swap; }')
+  document.head.appendChild(style)
 }
 xhr.send()
+url2 = 'https://fonts.googleapis.com/css?family=Noto+Sans+JP'
+xhr2 = new XMLHttpRequest()
+xhr2.open('GET', url2)
+xhr2.onreadystatechange = function () {
+  if (xhr2.readyState !== 4 || xhr2.status !== 200) return
+  var style
+  style = document.createElement('style')
+  style.innerHTML = xhr2.responseText.replace(/}/g, 'font-display: swap; }')
+  document.head.appendChild(style)
+}
+xhr2.send()
 </script>
 <? /* Branch
 -------------------- */ ?>
-<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/js/highlight.css">
-<script src="<?php echo get_template_directory_uri(); ?>/js/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
+<?php if ( is_home() || is_front_page() ) : ?>
+	<link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+	<script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+<?php elseif (is_single()) :?>
+	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/js/highlight.css">
+	<script src="<?php echo get_template_directory_uri(); ?>/js/highlight.pack.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
+<?php endif ; ?>
 </head>
 <body>
 <header>

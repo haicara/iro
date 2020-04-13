@@ -29,7 +29,33 @@ jQuery(function($){
 			return false;
 		});
 	});
+
 });
+var swiper = new Swiper('.slider', {
+		slidesPerView: 2,
+		centeredSlides: true,
+		spaceBetween: 0,
+		loop: true,
+		autoplay: {
+			delay: 2500,
+			disableOnInteraction: false,
+		},
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
+		pagination: {
+			el: '.swiper-pagination',
+		},
+		breakpoints: {
+			414: {
+				slidesPerView: 1,
+			},
+			768: {
+				slidesPerView: 1.5,
+			}
+		}
+	});
 </script>
 </body>
 </html>
