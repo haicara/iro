@@ -44,6 +44,10 @@ function customizer_color() {
 	.post-list li p {
 		background-color: <?php echo $main_color; ?>;
 	}
+	/* single aside */
+	article aside {
+		background-color: <?php echo $main_color; ?>;
+	}
 	footer .about dt {
 		color: <?php echo $main_color; ?>;
 	}

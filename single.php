@@ -21,13 +21,26 @@
 				<?php the_content(); ?>
 			</div>
 			<aside>
-				<p class="single_date"><?php the_time('Y.m.d'); ?></p>
-				<li class="single_category"><?php the_category(' ' , $parents); ?></li>
-				<li class="single_tag"><?php the_tags('' , $parents); ?></li>
+				<div class="desc">
+					<p class="category"><?php the_category(' ' , $parents); ?></p>
+					<p class="tag"><?php the_tags('' , $parents); ?></p>
+					<p class="date"><?php the_time('Y.m.d'); ?></p>
+				</div>
+				<div class="share">
+					<p class="title">SHARE !</p>
+				</div>
 			</aside>
         </article>
         <?php endwhile; ?>
         <?php endif; ?>
+		<div class="paging">
+			<div class="prev">
+				<?php previous_post_link('%link'); ?>
+			</div>
+			<div class="next">
+				<?php next_post_link('%link'); ?>
+			</div>
+		</div>
         <section>
 			<div class="inner">
 				<h2 data-text="RELATED POSTS">こんな記事も読まれています</h2>
@@ -78,10 +91,6 @@
 			</div>
 		</section>
 	</main>
-<div class="paging">
-	<?php previous_post_link('%link', '← PREV'); ?>
-	<?php next_post_link('%link', 'NEXT →'); ?>
-</div>
 <?php get_footer(); ?>
 
 
