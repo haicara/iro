@@ -13,6 +13,7 @@ html,body,h1,h2,h3,h4,h5,h6,ul,li,p {
 }
 $font: 'Rajdhani','Noto Sans JP',游ゴシック,"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 $text_font: 'Noto Sans JP',游ゴシック,"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+$letter_spacing: 1px;
 * {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -172,7 +173,7 @@ header {
 			top: -16px
 		}
 	}
-	.overlay{
+	.overlay {
 		background: #000;
 		opacity: 0;
 		pointer-events: none;
@@ -185,6 +186,7 @@ header {
 	}
 	nav {
 		font-size: 1rem;
+		letter-spacing: $letter_spacing;
 		color: #fff;
 		max-width: 100%;
 		width: 480px;
@@ -736,6 +738,7 @@ footer {
     color: #fff;
     margin: 0;
     padding: 30px 0;
+	letter-spacing: $letter_spacing;
 	a {
 		color: #eee;
 		&:hover {
