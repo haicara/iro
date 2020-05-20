@@ -22,16 +22,46 @@ the_post_thumbnail('full');
 function theme_customizer_extension($wp_customize) {
 	// Main color
 	$wp_customize->add_setting( 'main_color', array(
-	'default' => '#18cad3',
+		'default' => '#18cad3',
 	));
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'main_color', array(
-	'label' => 'Main color',
-	'section' => 'colors',
-	'settings' => 'main_color',
-	'priority' => 20,
+		'label' => 'Main color',
+		'section' => 'colors',
+		'settings' => 'main_color',
+		'priority' => 20,
 	)));
+	// Ad codes
+	$wp_customize->add_section( 'ad', array (
+		'title' => '広告関連',
+		'priority' => 100,
+	));
+	$wp_customize->add_setting( 'ad_ga', array (
+		'default' => null,
+	));
+	$wp_customize->add_control( 'ad_ga', array(
+		'section' => 'ad',
+		'settings' => 'ad_ga',
+		'label' =>'Google Adsense',
+		'description' => '&lt;head&gt; ~ &lt;/head&gt;に挿入するコードを入力します。',
+		'type' => 'textarea',
+		'priority' => 10,
+	));
+	$wp_customize->add_setting( 'ad_vc', array (
+		'default' => null,
+	));
+	$wp_customize->add_control( 'ad_vc', array(
+		'section' => 'ad',
+		'settings' => 'ad_vc',
+		'label' =>'Value Commerce',
+		'description' => '&lt;head&gt; ~ &lt;/head&gt;に挿入するコードを入力します。',
+		'type' => 'textarea',
+		'priority' => 20,
+	));
 }
 add_action('customize_register', 'theme_customizer_extension');
+function ad() {
+ return get_theme_mod( 'ad', true );
+}
 // Main color
 function customizer_color() {
 	$main_color = get_theme_mod( 'main_color', '#18cad3'); ?>

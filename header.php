@@ -45,6 +45,9 @@ xhr2.send()
 	<script src="<?php echo get_template_directory_uri(); ?>/js/highlight.pack.js"></script>
 	<script>hljs.initHighlightingOnLoad();</script>
 <?php endif ; ?>
+<?php if ( ad() ) : ?>
+	<?php echo ad(); ?>
+<?php endif ; ?>
 </head>
 <body>
 <header>
