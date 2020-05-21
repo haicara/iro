@@ -31,7 +31,7 @@ function theme_customizer_extension($wp_customize) {
 		'priority' => 20,
 	)));
 	// Ad codes
-	$wp_customize->add_section( 'ad', array (
+	$wp_customize->add_section( 'ad_setting', array (
 		'title' => '広告関連',
 		'priority' => 100,
 	));
@@ -39,7 +39,7 @@ function theme_customizer_extension($wp_customize) {
 		'default' => null,
 	));
 	$wp_customize->add_control( 'ad_ga', array(
-		'section' => 'ad',
+		'section' => 'ad_setting',
 		'settings' => 'ad_ga',
 		'label' =>'Google Adsense',
 		'description' => '&lt;head&gt; ~ &lt;/head&gt;に挿入するコードを入力します。',
@@ -50,7 +50,7 @@ function theme_customizer_extension($wp_customize) {
 		'default' => null,
 	));
 	$wp_customize->add_control( 'ad_vc', array(
-		'section' => 'ad',
+		'section' => 'ad_setting',
 		'settings' => 'ad_vc',
 		'label' =>'Value Commerce',
 		'description' => '&lt;head&gt; ~ &lt;/head&gt;に挿入するコードを入力します。',
