@@ -60,7 +60,7 @@ function theme_customizer_extension($wp_customize) {
 }
 add_action('customize_register', 'theme_customizer_extension');
 function ad() {
- return get_theme_mod( 'ad', true );
+ return get_theme_mod( 'ad_setting', null );
 }
 // Main color
 function customizer_color() {
